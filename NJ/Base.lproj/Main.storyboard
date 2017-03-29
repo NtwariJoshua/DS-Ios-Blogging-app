@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -101,7 +102,7 @@ career as a software engineer</string>
         <scene sceneID="qc3-kn-dSG">
             <objects>
                 <collectionViewController id="haq-Yd-1lO" customClass="ArticlesCollectionViewController" customModule="NJ" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="mJ1-kC-77m">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mJ1-kC-77m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,7 +113,7 @@ career as a software engineer</string>
                             <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7jL-E2-pHh">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7jL-E2-pHh" customClass="ArticleCollectionViewCell" customModule="NJ" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -126,14 +127,47 @@ career as a software engineer</string>
                                                 <constraint firstAttribute="width" constant="150" id="clb-KX-3Ah"/>
                                             </constraints>
                                         </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-bX-3bN">
+                                            <rect key="frame" x="0.0" y="120" width="150" height="30"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nFQ-lP-RgY">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cFJ-0G-Oda">
+                                                        <rect key="frame" x="0.0" y="5" width="150" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="cFJ-0G-Oda" secondAttribute="trailing" id="4aL-me-nhI"/>
+                                                    <constraint firstItem="cFJ-0G-Oda" firstAttribute="top" secondItem="nFQ-lP-RgY" secondAttribute="top" constant="5" id="9kW-6C-XVK"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cFJ-0G-Oda" secondAttribute="bottom" constant="4" id="FW7-U9-fso"/>
+                                                    <constraint firstItem="cFJ-0G-Oda" firstAttribute="leading" secondItem="nFQ-lP-RgY" secondAttribute="leading" id="MRc-fY-wIT"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="DmX-b3-Jb1"/>
+                                            </constraints>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="14M-SH-NGx" firstAttribute="leading" secondItem="7jL-E2-pHh" secondAttribute="leading" id="93K-XE-SZf"/>
+                                    <constraint firstAttribute="bottom" secondItem="NGY-bX-3bN" secondAttribute="bottom" id="KiN-b7-tA0"/>
                                     <constraint firstAttribute="bottom" secondItem="14M-SH-NGx" secondAttribute="bottom" id="MW5-uN-hST"/>
+                                    <constraint firstItem="NGY-bX-3bN" firstAttribute="leading" secondItem="7jL-E2-pHh" secondAttribute="leading" id="kbn-rp-s2x"/>
+                                    <constraint firstAttribute="trailing" secondItem="NGY-bX-3bN" secondAttribute="trailing" id="oNQ-0n-MkN"/>
                                     <constraint firstAttribute="trailing" secondItem="14M-SH-NGx" secondAttribute="trailing" id="uz4-t4-T5n"/>
                                     <constraint firstItem="14M-SH-NGx" firstAttribute="top" secondItem="7jL-E2-pHh" secondAttribute="top" id="yG4-77-Xb4"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="ArticleImageView" destination="14M-SH-NGx" id="Gsz-R6-Fau"/>
+                                    <outlet property="ArticleTitleLabel" destination="cFJ-0G-Oda" id="6Ge-Pm-aoq"/>
+                                    <outlet property="VisualEffectView" destination="NGY-bX-3bN" id="L26-GG-WOQ"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -142,10 +176,51 @@ career as a software engineer</string>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="ujS-do-KJV"/>
+                    <connections>
+                        <segue destination="RVW-q1-koz" kind="show" identifier="showDetailView" id="rqe-7p-2tH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNQ-nK-o6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1844" y="114.69265367316342"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="CG9-XJ-F3q">
+            <objects>
+                <viewController id="RVW-q1-koz" customClass="DetailViewController" customModule="NJ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DpX-II-Owf"/>
+                        <viewControllerLayoutGuide type="bottom" id="B97-ct-iHt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nGa-4W-ELy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7v-jE-jXk">
+                                <rect key="frame" x="52" y="323" width="270" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="YhJ-vI-TuQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y7v-jE-jXk" firstAttribute="top" secondItem="DpX-II-Owf" secondAttribute="bottom" constant="259" id="J14-Sv-PKF"/>
+                            <constraint firstItem="Y7v-jE-jXk" firstAttribute="leading" secondItem="nGa-4W-ELy" secondAttribute="leadingMargin" constant="36" id="LkN-Ak-zCN"/>
+                            <constraint firstItem="B97-ct-iHt" firstAttribute="top" secondItem="Y7v-jE-jXk" secondAttribute="bottom" constant="139" id="ONx-3F-bOS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Y7v-jE-jXk" secondAttribute="trailing" constant="37" id="fQV-Uk-cPe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DetailLabel" destination="Y7v-jE-jXk" id="tW9-SD-F6q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Srj-7Z-C7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2677.5999999999999" y="117.39130434782609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ymj-iY-f16">
@@ -167,7 +242,7 @@ career as a software engineer</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Placeholder" width="400" height="240"/>
+        <image name="Placeholder" width="485" height="654"/>
         <image name="app-background" width="640" height="960"/>
         <image name="long btn bg" width="329" height="36"/>
     </resources>
